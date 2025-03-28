@@ -1,0 +1,98 @@
+<h1>Paper Errata</h1>
+
+<hr />
+
+<h4>Abelian: A Compiler for Graph Analytics on Distributed, Heterogeneous Platforms</h4>
+
+<p>
+The code run for experiments in this paper for the "compiled" code weren't
+compiled and were manually written to mimic the code that the compiler would
+write. The compiler we had would generate some code, but as far as I remember
+it was not able to put the code in the correct place 100% of the time.
+However, there was effort put in to mimic what the compiled code would have
+looked like in the manual creation of it, so the ideas of the paper still hold
+some merit.
+</p>
+
+<p>
+Given my involvement in this code writing, I do not consider this paper as part
+of my CV. I only mention it so that I can note the above.
+</p>
+
+<hr />
+
+<h4>Efficient Distribution for Deep Learning on Large Graphs</h4>
+
+<p>
+The paper found on the GNNSys webpage contains an incorrect appendix:
+the learning rates for DGL and DistDGL are not 0.01 in all cases.
+DistDGL used 0.003 in our experiments, and DGL used 0.01 in the
+experiments except for reddit with GCN which uses 0.02.
+</p>
+
+<p>
+This has been corrected in the version of the paper posted on my webpage
+(unlike the other errors on this page, it is corrected here because this is in
+a workshop paper, which is considered non-archival).
+</p>
+
+<hr />
+<h4>DistTC: High Performance Distributed Triangle Counting</h4>
+
+<p>
+The paper mentions that the source code for TriCore was not available during
+the time of writing.  The code was indeed public when we published this paper
+as we found out after publication.  During writing and experimental results
+collction, we had contacted the authors and did a search for the code, but the
+authors did not reply nor were not able to find it; this is why the paper says
+it is not available.
+</p>
+
+<p>
+<b>Important Note (originally added 4/12/21):</b>
+The triangle counting algorithm in this paper had already existed in past work.
+Even though DistTC cites this work, I was not aware that the algorithm in that
+paper is essentially the same.
+</p>
+
+<p>
+PATRIC: A Parallel Algorithm for Counting Triangles in Massive Networks, CIKM'13.<br>
+<a href="http://www.cs.uno.edu/~arif/paper/patric.pdf">
+http://www.cs.uno.edu/~arif/paper/patric.pdf
+</a>
+</p>
+
+<p>
+What DistTC does that is different is that it provides a GPU implementation
+compared to the original's CPU implementation. The use of the CuSP partitioner
+can also allow for different kinds of edge cuts to be explored more easily than
+the original formulation.
+</p>
+
+<p>
+If DistTC is cited in your work, please also cite PATRIC.
+</p>
+
+<hr />
+<h4>A Round-Efficient Distributed Betweenness Centrality Algorithm</h4>
+
+<p>
+There was a correctness bug in MRBC that affected indochina and
+rmat24 runs in the paper; with regard to runtimes,
+only indochina scaling numbers are significantly different:
+using numbers from the corrected version of MRBC
+affects the scaling numbers for indochina in the Results section
+(1 host indochina runtime is around 5% slower, so scaling to 32 hosts ends up
+better if new numbers are used because at scale there is no
+significant change with the corrected version).
+</p>
+
+<p>
+The correct version of MRBC is available on the Galois GitHub.
+</p>
+
+<hr />
+
+<p>
+<b>Last update: March 27, 2025</b>
+</p>
